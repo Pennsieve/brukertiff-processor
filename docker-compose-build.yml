@@ -1,0 +1,10 @@
+version: '3.5'
+
+services:
+  brukertiff_processor:
+    build:
+      context: .
+      target: prod
+      dockerfile: brukertiff_processor/Dockerfile
+    container_name: brukertiff-processor
+    image: pennsieve/brukertiff-processor:${IMAGE_TAG}

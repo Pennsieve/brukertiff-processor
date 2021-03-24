@@ -1,0 +1,19 @@
+version: '3.5'
+
+services:
+  brukertiff_processor:
+    build:
+      context: .
+      dockerfile: brukertiff_processor/Dockerfile
+    container_name: brukertiff-processor
+    command: ["python", "-m", "pytest", "-s", "-x", "--cov-report", "html:/docker_scratch/htmlreport", "--cov=brukertiff_processor", "tests/"]
+    env_file:
+      - brukertiff_processor/test.env
+    image: pennsieve/brukertiff-processor:${IMAGE_TAG}
+    volumes:
+      - ./data/brukertiff:/docker_scratch/
+      - ./brukertiff_processor/tests/resources:/test-resources/
+#      - ./data/large_data/:/test-resources/
+    environment:
+      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
+      AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
