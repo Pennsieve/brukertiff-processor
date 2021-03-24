@@ -1,7 +1,7 @@
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # TEST IMAGE
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-FROM blackfynn/base-processor-pandas-test:1-5800e81 as test
+FROM pennsieve/base-processor-pandas-test:1-5800e81 as test
 
 # for tests only
 RUN cd /usr/bin && apk add --no-cache --update openjdk8 python2-dev gcc musl-dev libffi-dev jpeg-dev zlib-dev bash git openssh && \
@@ -35,7 +35,7 @@ ENTRYPOINT [""]
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # PRODUCTION IMAGE
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-FROM blackfynn/base-processor-pandas:1-5800e81 as prod
+FROM pennsieve/base-processor-pandas:1-5800e81 as prod
 
 # for tests only
 RUN cd /usr/bin && apk add --no-cache --update openjdk8 python2-dev gcc musl-dev libffi-dev openssl-dev jpeg-dev zlib-dev bash git openssh && \
